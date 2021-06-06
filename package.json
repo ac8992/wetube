@@ -16,15 +16,24 @@
   },
   "homepage": "https://github.com/ac8992/wetube#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-mongo": "^4.4.1",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "mongoose": "^5.12.12",
     "morgan": "^1.10.0",
-    "pug": "^3.0.2"
+    "node-fetch": "^2.6.1",
+    "pug": "^3.0.2",
+    "unfetch": "^4.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/node": "^7.14.2",
     "@babel/preset-env": "^7.14.2",
     "nodemon": "^2.0.7"
+  },
+  "optionalDependencies": {
+    "fsevents": "*"
   }
 }
