@@ -128,10 +128,12 @@ export const postEdit = async (req, res) => {
     const pageTitle = "Edit Profile";
     const {
         session: {
-            user: { _id },
+            user: { _id, avatarUrl },
         },
         body: { name, email, username, location },
+        file,
     } = req;
+    console.log(file);
     if (req.body.email !== req.session.user.email) {
         return res.status(400).render("edit-profile", { pageTitle, errorMessage: "This email is not available" });
     }
@@ -139,7 +141,7 @@ export const postEdit = async (req, res) => {
         return res.status(400).render("edit-profile", { pageTitle, errorMessage: "This username is not available" });
     }
     const updateUser = await User.findByIdAndUpdate(_id, {
-        name, email, username, location
+        avatarUrl: file ? file.path : avatarUrl, name, email, username, location
     },
         { new: true }
     )
