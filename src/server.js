@@ -6,6 +6,8 @@ import rootRouter from "./routeres/rootRouter";
 import videoRouter from "./routeres/videoRouter";
 import userRouter from "./routeres/userRouter";
 import { localsMiddleware } from "./middlewares";
+import apiRouter from "./routeres/apiRouter";
+import flash from "express-flash";
 
 
 const app = express();
@@ -23,12 +25,14 @@ app.use(session({
     store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
 }))
 
+app.use(flash());
 app.use(localsMiddleware);
 app.use("/", rootRouter);
 app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("assets"));
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);
+app.use("/api", apiRouter);
 
 
 export default app;

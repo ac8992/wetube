@@ -87,6 +87,11 @@ header .header__avatar {
   height: 50px;
   border-radius: 50%;
 }
+header .header-title {
+  font-size: 20px;
+  margin-left: 10px;
+  color: white;
+}
 
 footer {
   text-align: center;
@@ -148,7 +153,9 @@ form {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-input:not(input[type=range]) {
+input[type=text],
+input[type=file],
+input[type=password] {
   all: unset;
   padding: 15px 20px;
   border-radius: 5px;
@@ -159,8 +166,14 @@ input:not(input[type=range]) {
   color: white;
   width: 90%;
 }
-input:not(input[type=range])::placeholder {
+input[type=text]::placeholder,
+input[type=file]::placeholder,
+input[type=password]::placeholder {
   color: rgba(255, 255, 255, 0.7);
+}
+
+input[type=submit] {
+  width: 100%;
 }
 
 input[type=submit],
@@ -182,6 +195,58 @@ input[type=submit],
 .social-login .social__btn--github {
   background-color: transparent;
   color: azure;
+}
+
+#videoContainer {
+  width: 100%;
+  position: relative;
+}
+#videoContainer video {
+  width: 100%;
+}
+#videoContainer .videoControls {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  align-items: center;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 10px;
+  width: 95%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr auto;
+  gap: 10px;
+  justify-content: space-between;
+  background-color: #0f1117;
+  padding: 10px;
+  left: 0;
+  box-sizing: border-box;
+}
+#videoContainer .videoControls.showing {
+  opacity: 1;
+}
+#videoContainer .videoControls .videoControls__play {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#videoContainer .videoControls .videoControls__play .videoControls__playBtn {
+  margin: 0px 15px;
+}
+#videoContainer .videoControls .videoControls__play .videoControls__time {
+  font-size: 12px;
+}
+#videoContainer .videoControls .videoControls__volume {
+  display: flex;
+  align-items: center;
+}
+#videoContainer .videoControls .videoControls__volume span {
+  margin-left: 10px;
+}
+#videoContainer .videoControls .videoControls__volume span i {
+  font-size: 20px;
 }
 
 .search__form {
@@ -259,4 +324,32 @@ main {
   width: 100%;
   margin: 0 auto;
   margin-top: 50px;
+}
+
+@keyframes goAway {
+  from {
+    transform: none;
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+.message {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  max-width: 200px;
+  padding: 10px 20px;
+  border-radius: 1000px;
+  text-align: center;
+  animation: goAway 0.5s ease-in-out forwards;
+  animation-delay: 5s;
+}
+.message.error {
+  background-color: tomato;
+  color: white;
 }
