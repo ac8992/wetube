@@ -141,7 +141,7 @@ export const postEdit = async (req, res) => {
         return res.status(400).render("edit-profile", { pageTitle, errorMessage: "This username is not available" });
     }
     const updateUser = await User.findByIdAndUpdate(_id, {
-        avatarUrl: file ? file.path : avatarUrl, name, email, username, location
+        avatarUrl: file ? file.location : avatarUrl, name, email, username, location
     },
         { new: true }
     )
