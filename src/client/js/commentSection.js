@@ -3,7 +3,7 @@ import { async } from "regenerator-runtime";
 
 const videoContainer = document.getElementById("videoContainer");
 const form = document.getElementById("commentForm");
-const comment_del = document.querySelectorAll("#comment_del");
+const comment_del = document.querySelector("#comment_del");
 const video__comment = document.querySelector(".video__comment");
 
 
@@ -60,13 +60,6 @@ if (form) {
     form.addEventListener("submit", handleSubmit);
 }
 
-// if (comment_del) {
-//     comment_del.addEventListener("click", handleCommentDelete);
-// }
-
-
 if (comment_del) {
-    comment_del.forEach((btn) => {
-        btn.addEventListener("click", handleCommentDelete);
-    });
+    comment_del.addEventListener("click", handleCommentDelete);
 }

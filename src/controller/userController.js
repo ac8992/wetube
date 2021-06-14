@@ -134,7 +134,6 @@ export const postEdit = async (req, res) => {
         body: { name, email, username, location },
         file,
     } = req;
-    console.log(file);
     if (req.body.email !== req.session.user.email) {
         return res.status(400).render("edit-profile", { pageTitle, errorMessage: "This email is not available" });
     }
